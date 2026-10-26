@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barcode & QR-Code Generator</title>
+
+    <link rel="stylesheet" type="text/css" href="barcode-generator.css"/>
+
+    <script src="barcode-generator.js"></script>
+
+    <script src="https://jsdelivr.net"></script>
+    <script src="https://cloudflare.com"></script>
+</head>
+<body>
+
+<div class="container">
+    <h1>Barcode & QR-Code Generator</h1>
+    <p class="subtitle">Funktioniert online und offline direkt im Browser</p>
+    
+    <div class="form-group">
+        <label for="codeType">1. Typ auswählen:</label>
+        <select id="codeType" onchange="updateLabels()">
+            <option value="QR">QR-Code (Für Web-Links / URLs)</option>
+            <option value="CODE128">Barcode: Code 128 (Universell)</option>
+            <option value="EAN13">Barcode: EAN-13 (12-13 Zahlen für Handel)</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label id="inputLabel" for="textInput">2. Link oder Text eingeben:</label>
+        <input type="text" id="textInput" value="https://google.com">
+    </div>
+
+    <button type="button" onclick="generateNow()">Code generieren</button>
+
+    <div class="output-area">
+        <div id="statusText" style="color: #888;">Ihr Code wird hier angezeigt</div>
+        
+        <!-- Hier werden die Codes injiziert -->
+        <div id="qrcode-output"></div>
+        <img id="barcode-output" alt="Barcode">
+        
+        <button id="downloadBtn" class="download-btn" onclick="saveImage()">Grafik herunterladen (.png)</button>
+    </div>
+</div>
+</body>
+</html>
